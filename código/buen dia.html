@@ -42,11 +42,20 @@
     .download-container {
       margin-top: 2rem;
     }
+    #timer {
+      font-weight: bold;
+      color: #dc3545;
+      margin-top: 1rem;
+    }
+    #aceptarBtn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
   </style>
 </head>
 <body>
 
-  <h1>código «Sol»</h1>
+  <h1>Código «Sol»</h1>
 
   <p>Este código realiza la siguiente función:</p>
   <p><strong>Este código HTML está diseñado para enviar un mensaje de buenos días de manera</p>
@@ -57,13 +66,13 @@
   <p>En el centro de la pantalla, aparece un título que dice «Buenos días», seguido por un mensaje</p> 
   <p>ingenioso: «días porque buena ya estás tú«. Este toque de humor es ideal para desear un</p> 
   <p>buen día de forma divertida y romántica. Ideal para compartir por WhatsApp y sorprender a alguien.</strong></p>
-  
 
   <video src="video/buendia.mp4" controls autoplay loop muted style="max-width: 400px; margin: 2rem auto; display: block; border: 1px solid #ccc; border-radius: 10px;"></video>
 
   <div class="cookie-box">
     <p>Este sitio utiliza cookies para mejorar la experiencia. Debes aceptarlas para descargar el archivo.</p>
-    <button onclick="aceptarCookies()">Aceptar cookies</button>
+    <p id="timer">Tiempo restante: 05:00</p>
+    <button id="aceptarBtn" onclick="aceptarCookies()">Aceptar cookies</button>
   </div>
 
   <div class="download-container">
@@ -73,13 +82,55 @@
   </div>
 
   <script>
+    let timeLeft = 300; // 5 minutos en segundos
+    let waitTime = 120; // 2 minutos de espera en segundos
+    let timer, waitTimer;
+
+    const aceptarBtn = document.getElementById('aceptarBtn');
+    const timerDisplay = document.getElementById('timer');
+
+    function startTimer() {
+      timer = setInterval(() => {
+        if (timeLeft <= 0) {
+          clearInterval(timer);
+          aceptarBtn.disabled = true;
+          timerDisplay.textContent = "Tiempo agotado. Ya no puedes aceptar las cookies.";
+          enableRetry(); // Activar el botón de "Aceptar cookies" después de 2 minutos
+          return;
+        }
+
+        timeLeft--;
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        timerDisplay.textContent = `Tiempo restante: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      }, 1000); // Actualiza cada segundo
+    }
+
+    function enableRetry() {
+      waitTimer = setInterval(() => {
+        if (waitTime <= 0) {
+          clearInterval(waitTimer);
+          aceptarBtn.disabled = false;
+          timerDisplay.textContent = "Puedes volver a aceptar las cookies.";
+        }
+
+        waitTime--;
+      }, 1000); // Espera 2 minutos antes de habilitar de nuevo el botón
+    }
+
     function aceptarCookies() {
+      if (aceptarBtn.disabled) return;
+
       const btn = document.getElementById('downloadBtn');
       btn.disabled = false;
       btn.classList.add('enabled');
       btn.style.cursor = 'pointer';
       document.querySelector('.cookie-box').style.display = 'none';
+      clearInterval(timer); // Detener el contador si se aceptan las cookies
     }
+
+    // Iniciar el contador al cargar la página
+    startTimer();
   </script>
 
 </body>

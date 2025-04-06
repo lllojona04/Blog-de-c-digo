@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Descarga de Código</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background-color: #f4f4f4;
+      text-align: center;
+    }
+    .cookie-box {
+      background: #fff3cd;
+      border: 1px solid #ffeeba;
+      padding: 1rem;
+      margin: 2rem auto;
+      display: inline-block;
+    }
+    #downloadBtn {
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: not-allowed;
+      opacity: 0.6;
+      margin-top: 2rem;
+    }
+    #downloadBtn.enabled {
+      cursor: pointer;
+      opacity: 1;
+    }
+    img {
+      max-width: 400px;
+      margin: 2rem auto;
+      display: block;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+    .download-container {
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>código «Sol»</h1>
+
+  <p>Este código realiza la siguiente función:</p>
+  <p><strong>Este código HTML está diseñado para enviar un mensaje de buenos días de manera</p>
+  <p>creativa y visualmente atractiva. Al abrir el archivo, el usuario verá un sol que se va</p> 
+  <p>elevando poco a poco en el horizonte, mientras el fondo pasa de un cielo naranja al</p>
+  <p>amanecer a un cielo azul brillante. En la parte inferior se muestra un barco sobre el mar,</p> 
+  <p>creando una atmósfera de serenidad y belleza matutina.</p>
+  <p>En el centro de la pantalla, aparece un título que dice «Buenos días», seguido por un mensaje</p> 
+  <p>ingenioso: «días porque buena ya estás tú«. Este toque de humor es ideal para desear un</p> 
+  <p>buen día de forma divertida y romántica. Ideal para compartir por WhatsApp y sorprender a alguien.</strong></p>
+  
+
+  <video src="video/buendia.mp4" controls autoplay loop muted style="max-width: 400px; margin: 2rem auto; display: block; border: 1px solid #ccc; border-radius: 10px;"></video>
+
+  <div class="cookie-box">
+    <p>Este sitio utiliza cookies para mejorar la experiencia. Debes aceptarlas para descargar el archivo.</p>
+    <button onclick="aceptarCookies()">Aceptar cookies</button>
+  </div>
+
+  <div class="download-container">
+    <a id="downloadLink" href="./códigos/buenosdias.html" download>
+      <button id="downloadBtn" disabled>Descargar Código</button>
+    </a>
+  </div>
+
+  <script>
+    function aceptarCookies() {
+      const btn = document.getElementById('downloadBtn');
+      btn.disabled = false;
+      btn.classList.add('enabled');
+      btn.style.cursor = 'pointer';
+      document.querySelector('.cookie-box').style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>

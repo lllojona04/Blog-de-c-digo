@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Descarga de Código</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background-color: #f4f4f4;
+      text-align: center;
+    }
+    .cookie-box {
+      background: #fff3cd;
+      border: 1px solid #ffeeba;
+      padding: 1rem;
+      margin: 2rem auto;
+      display: inline-block;
+    }
+    #downloadBtn {
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: not-allowed;
+      opacity: 0.6;
+      margin-top: 2rem;
+    }
+    #downloadBtn.enabled {
+      cursor: pointer;
+      opacity: 1;
+    }
+    img {
+      max-width: 400px;
+      margin: 2rem auto;
+      display: block;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+    .download-container {
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Código «flor»</h1>
+
+  <p>Este código realiza la siguiente función:</p>
+  <p><strong>En la pantalla aparecen unas plantas que van creciendo hasta que se convierten </p>
+    <p> en unas bonitas flores amarillas. Existe una tradición en la que estas flores se </p> 
+    <p> envían en muchos lugares del mundo durante Septiembre.</p>
+     <p> Mientras van apareciendo las flores, una animación muestra un texto en la parte</p> 
+      <p> superior. El texto por defecto es ‘Las flores amarillas simbolizan la felicidad.  </p> 
+        <p> Tú eres la mía’. Este texto se puede modificar. </p>
+       Ideal para compartir por WhatsApp y sorprender a alguien.</strong></p>
+
+       <video src="video/flores.mp4" controls autoplay loop muted style="max-width: 400px; margin: 2rem auto; display: block; border: 1px solid #ccc; border-radius: 10px;"></video>
+
+  <div class="cookie-box">
+    <p>Este sitio utiliza cookies para mejorar la experiencia. Debes aceptarlas para descargar el archivo.</p>
+    <button onclick="aceptarCookies()">Aceptar cookies</button>
+  </div>
+
+  <div class="download-container">
+    <a id="downloadLink" href="./códigos/floresamarillas.html" download>
+      <button id="downloadBtn" disabled>Descargar Código</button>
+    </a>
+  </div>
+
+  <script>
+    function aceptarCookies() {
+      const btn = document.getElementById('downloadBtn');
+      btn.disabled = false;
+      btn.classList.add('enabled');
+      btn.style.cursor = 'pointer';
+      document.querySelector('.cookie-box').style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>
